@@ -1,13 +1,13 @@
 class SessionsController < ApplicationController
   def create
-    user = User.where(email: params[:email]).first
+    user = User.find_by_email(params[:email])
+    authenticator = PasswordAuthenticator.new(user)
 
-    if UserAuthenticator.new(user).authenticate(params[:password])
+    if authenticator.authenticate(params[:password])
       self.current_user = user
       redirect_to dashboard_path
     else
-      flash[:alert] = "Login failed."
-      render "new"
+      redirect_to login_path, alert: "Login failed."
     end
   end
 end

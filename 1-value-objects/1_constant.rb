@@ -1,10 +1,19 @@
 class Constant < ActiveRecord::Base
+  # ...
 
-  def better_than?(other)
-    rating > other.rating
+  def worse_rating
+    if rating_string == "F"
+      nil
+    else
+      rating_string.succ
+    end
   end
 
-  def rating
+  def rating_higher_than?(other_rating)
+    rating_string > other_rating.rating_string
+  end
+
+  def rating_string
     if remediation_cost <= 2
       "A"
     elsif remediation_cost <= 4

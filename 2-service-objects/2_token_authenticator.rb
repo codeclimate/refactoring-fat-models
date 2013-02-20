@@ -1,12 +1,11 @@
-class User < ActiveRecord::Base
-  # ...
-
-  def password_authenticate(unencrypted_password)
-    BCrypt::Password.new(password_digest) == unencrypted_password
+class TokenAuthenticator
+  def initialize(user)
+    @user = user
   end
 
-  def token_authenticate(provided_token)
-    secure_compare(api_token, provided_token)
+  def authenticate(provided_token)
+    return false if !@user || !@user.api_token?
+    secure_compare(@user.api_token, provided_token)
   end
 
 private
@@ -19,5 +18,4 @@ private
     b.each_byte { |byte| res |= byte ^ l.shift }
     res == 0
   end
-
 end

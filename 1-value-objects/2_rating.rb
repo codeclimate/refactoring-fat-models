@@ -19,7 +19,12 @@ class Rating
     @letter = letter
   end
 
-  def better_than?(other)
+  def worse
+    return nil if @letter == "F"
+    self.class.new(@letter.succ)
+  end
+
+  def higher_than?(other)
     self > other
   end
 

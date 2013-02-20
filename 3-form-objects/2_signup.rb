@@ -9,8 +9,8 @@ class Signup
   attr_reader :company
 
   attribute :name, String
-  attribute :company_name, String
   attribute :email, String
+  attribute :company_name, String
 
   validates :email, presence: true
   # … more validations …
