@@ -14,17 +14,11 @@ class Constant < ActiveRecord::Base
   end
 
   def rating_string
-    if remediation_cost <= 2
-      "A"
-    elsif remediation_cost <= 4
-      "B"
-    elsif remediation_cost <= 8
-      "C"
-    elsif remediation_cost <= 16
-      "D"
-    else
-      "F"
+    if    remediation_cost <= 2  then "A"
+    elsif remediation_cost <= 4  then "B"
+    elsif remediation_cost <= 8  then "C"
+    elsif remediation_cost <= 16 then "D"
+    else "F"
     end
   end
-
 end

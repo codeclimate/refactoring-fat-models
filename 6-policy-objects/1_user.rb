@@ -6,5 +6,4 @@ class User < ActiveRecord::Base
     receive_notification_type?(notification_type) &&
     (!project || receives_notifications_for?(project))
   end
-
 end

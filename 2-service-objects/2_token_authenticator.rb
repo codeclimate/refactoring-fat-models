@@ -10,7 +10,6 @@ class TokenAuthenticator
 
 private
 
-  # constant-time comparison algorithm to prevent timing attacks
   def secure_compare(a, b)
     return false unless a.bytesize == b.bytesize
     l = a.unpack "C#{a.bytesize}"

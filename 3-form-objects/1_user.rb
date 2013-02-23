@@ -1,6 +1,3 @@
-# 1. What if the user fails to save after saving the company?
-# 2. wtf does user#company return? strings?
-# 3. how do you create _just_ a fscking user
 class User < ActiveRecord::Base
   attr_accessor :company
 

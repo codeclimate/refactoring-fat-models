@@ -15,5 +15,4 @@ class User < ActiveRecord::Base
     score += 1 if @user.sent_invites?
     (score / 2.0 * 100)
   end
-
 end
